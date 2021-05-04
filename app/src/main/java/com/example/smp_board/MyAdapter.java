@@ -24,7 +24,7 @@ import java.util.Locale;
 
 public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     //final long now = System.currentTimeMillis();
-    //long now;
+    long now;
     //Date date = new Date(time);
     //String time2 = ((WriteActivity)WriteActivity.context_main).stime;
 
@@ -72,18 +72,20 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder myViewholder, int position) {
-        //now = (System.currentTimeMillis() - time)/60000;
+
+        long time_d = BoardInfoArrayList.get(position).w_time;
+        long now = System.currentTimeMillis();
+        long a  = (now - time_d)/60000;
         MyViewHolder myViewHolder = (MyViewHolder) myViewholder;
 
         myViewHolder.titleb.setText(BoardInfoArrayList.get(position).title);
         myViewHolder.contentb.setText(BoardInfoArrayList.get(position).content);
-        myViewHolder.timeb.setText(BoardInfoArrayList.get(position).time);
-        /*
+
         if (now == 0){
             myViewHolder.timeb.setText("방금");
         }else {
-            myViewHolder.timeb.setText(now+"전");
-        }*/
+            myViewHolder.timeb.setText(a+"분 전");
+        }
         //myViewHolder.commentb.setText(BoardInfoArrayList.get(position).comment);
 
     }

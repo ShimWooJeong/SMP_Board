@@ -1,6 +1,5 @@
 package com.example.smp_board;
 
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -9,7 +8,7 @@ public class BoardInfo {
     //final long now = System.currentTimeMillis();
     public String title;
     public String content;
-    public String time;
+    public long w_time;
     //public String comment;
     //public Date date;
 
@@ -17,11 +16,11 @@ public class BoardInfo {
 
     }
 
-    public BoardInfo(String title, String content, String time){
+    public BoardInfo(String title, String content, long w_time){
         // Default constructor required for calls to DataSnapshot.getValue(FirebasePost.class)
         this.title = title;
         this.content = content;
-        this.time = time;
+        this.w_time = w_time;
         //this.comment = comment;
         //this.date = date;
     }
@@ -32,9 +31,7 @@ public class BoardInfo {
     public void setContent(String content) { this.content = content; }
     //public Date getDate() { return date; }
     //public void setDate(Date date) { this.date = date; }
-    public String getTime() { return time; }
-    public void setTime(String time) { this.time = time; }
+    public long getTime() { return w_time; }
+    public void setTime(long w_time) { this.w_time = w_time; }
 
 }
-
-

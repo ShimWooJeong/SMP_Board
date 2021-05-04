@@ -69,8 +69,9 @@ public class WriteActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 DatabaseReference database = FirebaseDatabase.getInstance().getReference();
-                String sTimeStamp = new SimpleDateFormat("HH시mm분ss초", Locale.KOREA).format(time);
-                BoardInfo boardInfo = new BoardInfo(tv_title.getText().toString(), tv_content.getText().toString(), sTimeStamp);
+                long w_time = System.currentTimeMillis();
+                //String sTimeStamp = new SimpleDateFormat("HH시mm분ss초", Locale.KOREA).format(time);
+                BoardInfo boardInfo = new BoardInfo(tv_title.getText().toString(), tv_content.getText().toString(), w_time);
                 database.child("Board").push().setValue(boardInfo);
                 Toast.makeText(WriteActivity.this, "저장을 완료했습니다.", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
