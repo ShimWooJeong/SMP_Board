@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
-        mLayoutManager.setReverseLayout(true);
-        mLayoutManager.setStackFromEnd(true);
+        mLayoutManager.setReverseLayout(true); // 역순 (게시글은 역순, 댓글은 X)
+        mLayoutManager.setStackFromEnd(true); // 역순 (게시글은 역순, 댓글은 X)
         mRecyclerView.setLayoutManager(mLayoutManager);
         arrayList = new ArrayList<>();
 

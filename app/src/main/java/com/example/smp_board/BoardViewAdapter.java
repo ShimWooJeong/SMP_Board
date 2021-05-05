@@ -1,13 +1,9 @@
 package com.example.smp_board;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
@@ -17,16 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
 
-public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
-    //final long now = System.currentTimeMillis();
+public class BoardViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     long now;
     //Date date = new Date(time);
-    //String time2 = ((WriteActivity)WriteActivity.context_main).stime;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("Board");
@@ -35,9 +26,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private ArrayList<BoardInfo> BoardInfoArrayList;
     private Context context;
 
-    //Bundle bundle = ((Activity) context).getIntent().getExtras();
-
-    public MyAdapter(ArrayList<BoardInfo> BoardInfoarrayList, Context context) {
+    public BoardViewAdapter(ArrayList<BoardInfo> BoardInfoarrayList, Context context) {
         this.BoardInfoArrayList = BoardInfoarrayList;
         this.context = context;
     }
@@ -56,11 +45,6 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             commentb = view.findViewById(R.id.comment_bo);
         }
     }
-    /*
-    MyAdapter(ArrayList<BoardInfo> BoardInfoArrayList, Context context) {
-        this.BoardInfoArrayList = BoardInfoArrayList;
-    }
-*/
 
     @NonNull
     @Override
@@ -77,11 +61,10 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         long now = System.currentTimeMillis();
         long a  = (now - time_d)/60000; // 60000으로 나누면 분이 뜸
         MyViewHolder myViewHolder = (MyViewHolder) myViewholder;
-
         myViewHolder.titleb.setText(BoardInfoArrayList.get(position).title);
         myViewHolder.contentb.setText(BoardInfoArrayList.get(position).content);
 
-        if (now == 0){
+        if (a == 0){
             myViewHolder.timeb.setText("방금");
         }else {
             myViewHolder.timeb.setText(a+"분 전");
